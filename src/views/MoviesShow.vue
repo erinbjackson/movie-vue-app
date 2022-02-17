@@ -9,7 +9,7 @@
       };
     },
     created: function() {
-       axios.get(`http://127.0.0.1:3000/movies/${this.$route.params.id}`).then((response)=> {
+       axios.get(`/movies/${this.$route.params.id}`).then((response)=> {
           console.log("success", response.data);
           this.movie = response.data;
         });
@@ -18,7 +18,7 @@
     methods: {
       destroyMovie: function() {
        
-          axios.delete(`http://127.0.0.1:3000/movies/${this.movie.id}`).then((response) => {
+          axios.delete(`/movies/${this.movie.id}`).then((response) => {
             console.log("success", response.data);
             this.$router.push("/movies");
           });

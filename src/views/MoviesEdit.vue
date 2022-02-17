@@ -9,16 +9,16 @@
       };
     },
     created: function() {
-      axios.get(`http://127.0.0.1:3000/movies/${this.$route.params.id}`).then((response)=> {
+      axios.get(`/movies/${this.$route.params.id}`).then((response)=> {
         console.log("Movie To Edit", response.data);
         this.movie = response.data;
       })
     },
     methods: {
       updateMovie: function() {
-        axios.patch(`http://127.0.0.1:3000/movies/${this.movie.id}`, this.movie).then((response) => {
+        axios.put(`/movies/${this.movie.id}`, this.movie).then((response) => {
           console.log("success", response.data);
-          this.$router.push(`http://127.0.0.1:3000/movies/${this.movie.id}`);
+          this.$router.push(`/movies/${this.movie.id}`);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
@@ -40,7 +40,7 @@
 <label>Year: </label><input type="text" v-model="movie.year" ><br>
 <label>English: </label><input type="text" v-model="movie.english" ><br>
 <label>Runtime: </label><input type="text" v-model="movie.runtime" ><br>
-<input type="submit" value="Update">
+<input type="submit" value="Submit">
 </form>
 </div>
    </template>

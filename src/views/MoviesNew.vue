@@ -4,7 +4,7 @@
   export default {
     data: function () {
       return {
-        newParams: {},
+        newParams: {plot: ""},
         errors: []
       };
     },
@@ -14,7 +14,7 @@
     
     methods: {
       createMovie: function() {
-        axios.post("http://127.0.0.1:3000/movies", this.newParams).then((response)=> {
+        axios.post("/movies", this.newParams).then((response)=> {
           console.log("success", response.data);
           this.$router.push("/movies");
         })
@@ -32,6 +32,7 @@
 <form v-on:submit.prevent="createMovie()">
 <label for="">Title</label> <input type="text" v-model="newParams.title"><br>
 <label for="">Plot</label> <input type="text" v-model="newParams.plot"><br>
+<small>You have{{200 - newParams.plot.length}} charaters left.</small><br>
 <label for="">Year</label> <input type="text" v-model="newParams.year"><br>
 <label for="">Director</label> <input type="text" v-model="newParams.director"><br>
 <label for="">English</label> <input type="text" v-model="newParams.english"><br>
