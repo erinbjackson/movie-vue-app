@@ -36,16 +36,37 @@ export default {
 }
 
 #nav {
-  padding: 30px;
+  padding: 0px;
+  background-color: #333;
+  color: #fff;
+  margin-top: -8px;
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #fff;
+  padding: 8px;
+  
 }
 
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-
+button, input.submit {
+  color: #147060;
+    background-color: #fff;
+    border: 2px solid #147060;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px 10px;
+}
+.main-content {
+  margin-top: 50px;
+}
+a {
+  color:#1b9480;
+}
+a:visited {
+  color: #0a3f36
+}
 </style>

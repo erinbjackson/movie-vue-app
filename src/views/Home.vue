@@ -3,7 +3,7 @@
   export default {
     data: function () {
       return {
-        message: "Welcome to Vue.js!",
+        message: "",
         movies: [],
         createParams: {},
         currentMovie: {},
@@ -54,14 +54,21 @@
 </script>
 
 <template>
+
   <div class="home">
-    <h1>{{ message }}</h1>
+    <div class="hero">
+    <h1>Welcome to the movie app!</h1>
+    </div>
+    <div class="movie-list">
+    <h3>Check out the movie recomendations </h3>
 <div v-for=" movie in movies" v-bind:key="movie.id">
-<p>{{movie.id}}: {{movie.title}}</p>
-<button v-on:click="showMovie(movie)">More Info</button>
+<ul>
+<li> {{movie.title}}<br>
+<button v-on:click="showMovie(movie)">More Info</button></li></ul>
+</div>
 
 <dialog id="movieDetails">
-  <form method="dialog">
+  <form method="dialog" class="popup">
     <h3>Movie Info</h3>
   <p>{{currentMovie.title}}</p>
   <p>{{currentMovie.year}}</p>
@@ -80,8 +87,9 @@
 
 </dialog>
 </div>
-<div>
+<div class="add-movie">
 <h2>Add a Movie:</h2>
+<form>
 <input type="text" v-model="createParams.title" placeholder="title"><br>
 <input type="text" v-model="createParams.year" placeholder="year"><br>
 <input type="text" v-model="createParams.plot" placeholder="plot"><br>
@@ -89,8 +97,51 @@
 <input type="text" v-model="createParams.english" placeholder="english"><br>
 <input type="text" v-model="createParams.runtime" placeholder="runtime"><br>
 <button v-on:click="createMovies()">Add Movie</button>
+</form>
 </div>
   </div>
 </template>
 
-<style></style>
+<style>
+.popup {
+  width: 15em;
+  margin: 0 auto;
+}
+.hero {
+  background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-movies-1614634680.jpg");
+  background-size: cover;
+    height: 375px;
+    padding-top: 1px;
+}
+.hero h1 {
+  margin-top: 150px;
+  color: rgb(100, 100, 101);
+    font-size: 3.3em;
+    text-transform: capitalize;
+    background-color: rgba(255, 255, 255, 0.78);;
+}
+h3 {
+  text-transform: capitalize;
+}
+ul {
+  padding-inline-start: 1px;
+  margin-bottom: 60px;
+}
+ul li {
+  list-style-type: none;
+  text-align: center;
+  width: 33%;
+    float: left;
+    text-transform: capitalize;
+    padding-top: 10px;
+}
+.movie-list {
+  margin-bottom: 30px;;
+}
+.add-movie {
+  width: 100%;
+  clear: left;
+  padding-top: 20px;
+  background-color: #efefef6e;
+}
+</style>
